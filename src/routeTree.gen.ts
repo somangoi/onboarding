@@ -9,38 +9,95 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as FunnelRouteImport } from './routes/_funnel'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FunnelStep4RouteImport } from './routes/_funnel/step-4'
+import { Route as FunnelStep3RouteImport } from './routes/_funnel/step-3'
+import { Route as FunnelStep2RouteImport } from './routes/_funnel/step-2'
+import { Route as FunnelStep1RouteImport } from './routes/_funnel/step-1'
 
+const FunnelRoute = FunnelRouteImport.update({
+  id: '/_funnel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FunnelStep4Route = FunnelStep4RouteImport.update({
+  id: '/step-4',
+  path: '/step-4',
+  getParentRoute: () => FunnelRoute,
+} as any)
+const FunnelStep3Route = FunnelStep3RouteImport.update({
+  id: '/step-3',
+  path: '/step-3',
+  getParentRoute: () => FunnelRoute,
+} as any)
+const FunnelStep2Route = FunnelStep2RouteImport.update({
+  id: '/step-2',
+  path: '/step-2',
+  getParentRoute: () => FunnelRoute,
+} as any)
+const FunnelStep1Route = FunnelStep1RouteImport.update({
+  id: '/step-1',
+  path: '/step-1',
+  getParentRoute: () => FunnelRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/step-1': typeof FunnelStep1Route
+  '/step-2': typeof FunnelStep2Route
+  '/step-3': typeof FunnelStep3Route
+  '/step-4': typeof FunnelStep4Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/step-1': typeof FunnelStep1Route
+  '/step-2': typeof FunnelStep2Route
+  '/step-3': typeof FunnelStep3Route
+  '/step-4': typeof FunnelStep4Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_funnel': typeof FunnelRouteWithChildren
+  '/_funnel/step-1': typeof FunnelStep1Route
+  '/_funnel/step-2': typeof FunnelStep2Route
+  '/_funnel/step-3': typeof FunnelStep3Route
+  '/_funnel/step-4': typeof FunnelStep4Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/step-1' | '/step-2' | '/step-3' | '/step-4'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/step-1' | '/step-2' | '/step-3' | '/step-4'
+  id:
+    | '__root__'
+    | '/'
+    | '/_funnel'
+    | '/_funnel/step-1'
+    | '/_funnel/step-2'
+    | '/_funnel/step-3'
+    | '/_funnel/step-4'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FunnelRoute: typeof FunnelRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_funnel': {
+      id: '/_funnel'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof FunnelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +105,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_funnel/step-4': {
+      id: '/_funnel/step-4'
+      path: '/step-4'
+      fullPath: '/step-4'
+      preLoaderRoute: typeof FunnelStep4RouteImport
+      parentRoute: typeof FunnelRoute
+    }
+    '/_funnel/step-3': {
+      id: '/_funnel/step-3'
+      path: '/step-3'
+      fullPath: '/step-3'
+      preLoaderRoute: typeof FunnelStep3RouteImport
+      parentRoute: typeof FunnelRoute
+    }
+    '/_funnel/step-2': {
+      id: '/_funnel/step-2'
+      path: '/step-2'
+      fullPath: '/step-2'
+      preLoaderRoute: typeof FunnelStep2RouteImport
+      parentRoute: typeof FunnelRoute
+    }
+    '/_funnel/step-1': {
+      id: '/_funnel/step-1'
+      path: '/step-1'
+      fullPath: '/step-1'
+      preLoaderRoute: typeof FunnelStep1RouteImport
+      parentRoute: typeof FunnelRoute
+    }
   }
 }
 
+interface FunnelRouteChildren {
+  FunnelStep1Route: typeof FunnelStep1Route
+  FunnelStep2Route: typeof FunnelStep2Route
+  FunnelStep3Route: typeof FunnelStep3Route
+  FunnelStep4Route: typeof FunnelStep4Route
+}
+
+const FunnelRouteChildren: FunnelRouteChildren = {
+  FunnelStep1Route: FunnelStep1Route,
+  FunnelStep2Route: FunnelStep2Route,
+  FunnelStep3Route: FunnelStep3Route,
+  FunnelStep4Route: FunnelStep4Route,
+}
+
+const FunnelRouteWithChildren =
+  FunnelRoute._addFileChildren(FunnelRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FunnelRoute: FunnelRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

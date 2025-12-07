@@ -29,7 +29,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@eslint/js", "npm:9.39.1"],\
-          ["@tailwindcss/postcss", "npm:4.1.17"],\
+          ["@tailwindcss/vite", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:4.1.17"],\
           ["@tanstack/react-query", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:5.90.12"],\
           ["@tanstack/react-query-devtools", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:5.91.1"],\
           ["@tanstack/react-router", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:1.139.14"],\
@@ -63,15 +63,6 @@ const RAW_RUNTIME_STATE =
           ["zustand", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:5.0.9"]\
         ],\
         "linkType": "SOFT"\
-      }]\
-    ]],\
-    ["@alloc/quick-lru", [\
-      ["npm:5.2.0", {\
-        "packageLocation": "../../../.yarn/berry/cache/@alloc-quick-lru-npm-5.2.0-eb83517088-10c0.zip/node_modules/@alloc/quick-lru/",\
-        "packageDependencies": [\
-          ["@alloc/quick-lru", "npm:5.2.0"]\
-        ],\
-        "linkType": "HARD"\
       }]\
     ]],\
     ["@babel/code-frame", [\
@@ -1765,16 +1756,27 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["@tailwindcss/postcss", [\
+    ["@tailwindcss/vite", [\
       ["npm:4.1.17", {\
-        "packageLocation": "../../../.yarn/berry/cache/@tailwindcss-postcss-npm-4.1.17-6c3bbba6b5-10c0.zip/node_modules/@tailwindcss/postcss/",\
+        "packageLocation": "../../../.yarn/berry/cache/@tailwindcss-vite-npm-4.1.17-77169f6e51-10c0.zip/node_modules/@tailwindcss/vite/",\
         "packageDependencies": [\
-          ["@alloc/quick-lru", "npm:5.2.0"],\
+          ["@tailwindcss/vite", "npm:4.1.17"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:4.1.17", {\
+        "packageLocation": "./.yarn/__virtual__/@tailwindcss-vite-virtual-7eb443f2b7/4/.yarn/berry/cache/@tailwindcss-vite-npm-4.1.17-77169f6e51-10c0.zip/node_modules/@tailwindcss/vite/",\
+        "packageDependencies": [\
           ["@tailwindcss/node", "npm:4.1.17"],\
           ["@tailwindcss/oxide", "npm:4.1.17"],\
-          ["@tailwindcss/postcss", "npm:4.1.17"],\
-          ["postcss", "npm:8.5.6"],\
-          ["tailwindcss", "npm:4.1.17"]\
+          ["@tailwindcss/vite", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:4.1.17"],\
+          ["@types/vite", null],\
+          ["tailwindcss", "npm:4.1.17"],\
+          ["vite", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:7.2.6"]\
+        ],\
+        "packagePeers": [\
+          "@types/vite",\
+          "vite"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4506,7 +4508,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@eslint/js", "npm:9.39.1"],\
-          ["@tailwindcss/postcss", "npm:4.1.17"],\
+          ["@tailwindcss/vite", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:4.1.17"],\
           ["@tanstack/react-query", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:5.90.12"],\
           ["@tanstack/react-query-devtools", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:5.91.1"],\
           ["@tanstack/react-router", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:1.139.14"],\
