@@ -3,8 +3,7 @@ import { setupServer } from "msw/node";
 import { http, HttpResponse } from "msw";
 import type { OnboardingOptions, OnboardingResponse } from "../model/types";
 
-// Mock 서버 설정
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:5173";
 
 const server = setupServer(
   http.get(`${BASE_URL}/api/onboarding/options`, () => {
