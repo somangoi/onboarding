@@ -17,6 +17,7 @@ export const handlers = [
   }),
 
   http.get("/api/onboarding/options", () => {
+    console.log("🔵 [MSW] GET /api/onboarding/options 호출됨", new Date().toLocaleTimeString());
     return HttpResponse.json({
       userTypes: [
         { id: "individual", label: "개인 투자자" },
