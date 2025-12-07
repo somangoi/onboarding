@@ -23,8 +23,7 @@ const server = setupServer(
     } satisfies OnboardingOptions);
   }),
 
-  http.post(`${BASE_URL}/api/onboarding`, async ({ request }) => {
-    const body = await request.json();
+  http.post(`${BASE_URL}/api/onboarding`, async () => {
     return HttpResponse.json({
       success: true,
       message: "온보딩 완료",

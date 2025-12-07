@@ -1,34 +1,53 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { onboardingReducer, initialState, canMoveNext } from "../model/reducer";
-import type { OnboardingState, OnboardingAction } from "../model/types";
 
-interface OnboardingStore extends OnboardingState {
-  dispatch: (action: OnboardingAction) => void;
-  canMoveToNext: () => boolean;
+interface OnboardingStore {
+  selectedUserType: string | null;
+  selectedInterests: string[];
+  selectedIndustries: string[];
+
+  setUserType: (userType: string) => void;
+  toggleInterest: (interest: string) => void;
+  toggleIndustry: (industry: string) => void;
+  reset: () => void;
 }
 
 export const useOnboardingStore = create<OnboardingStore>()(
   persist(
-    (set, get) => ({
-      ...initialState,
+    (set) => ({
+      selectedUserType: null,
+      selectedInterests: [],
+      selectedIndustries: [],
 
-      dispatch: (action) => {
-        set((state) => onboardingReducer(state, action));
-      },
+      setUserType: (userType) => set({ selectedUserType: userType }),
 
-      canMoveToNext: () => {
-        return canMoveNext(get());
-      },
+      toggleInterest: (interest) =>
+        set((state) => ({
+          selectedInterests: state.selectedInterests.includes(interest)
+            ? state.selectedInterests.filter((i) => i !== interest)
+            : [...state.selectedInterests, interest],
+        })),
+
+      toggleIndustry: (industry) =>
+        set((state) => ({
+          selectedIndustries: state.selectedIndustries.includes(industry)
+            ? state.selectedIndustries.filter((i) => i !== industry)
+            : [...state.selectedIndustries, industry],
+        })),
+
+      reset: () =>
+        set({
+          selectedUserType: null,
+          selectedInterests: [],
+          selectedIndustries: [],
+        }),
     }),
     {
       name: "onboarding-storage",
       partialize: (state) => ({
-        currentStep: state.currentStep,
         selectedUserType: state.selectedUserType,
         selectedInterests: state.selectedInterests,
         selectedIndustries: state.selectedIndustries,
-        isCompleted: state.isCompleted,
       }),
     }
   )
