@@ -7,7 +7,7 @@ import { Toaster } from "@/shared/components/ui/Toaster";
 import "./index.css";
 
 import { routeTree } from "./routeTree.gen";
-import { queryClient } from "./lib/query-client";
+import { queryClient } from "./shared/lib/query-client";
 
 const router = createRouter({ routeTree });
 
