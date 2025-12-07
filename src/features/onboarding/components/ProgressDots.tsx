@@ -16,9 +16,8 @@ export function ProgressDots({ totalSteps, currentStep, className, showProgress 
         const isLast = stepNumber === totalSteps;
 
         return (
-          <>
+          <div key={stepNumber}>
             <div
-              key={stepNumber}
               className={cn(
                 "flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium",
                 isActive && "bg-[var(--color-primary)] text-white",
@@ -36,7 +35,7 @@ export function ProgressDots({ totalSteps, currentStep, className, showProgress 
                 <div className="w-[3px] h-[1px] rounded-full bg-[var(--color-text-sub)]"></div>
               </div>
             )}
-          </>
+          </div>
         );
       })}
     </div>
