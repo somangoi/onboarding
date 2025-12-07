@@ -1,7 +1,8 @@
-import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useOnboardingStore } from "@/entities/onboarding/store/useOnboardingStore";
 import { StepHeader } from "@/features/onboarding/components";
 import { Button } from "@/shared/components/Button";
+import { useSaveOnboarding } from "@/entities/onboarding";
 
 export const Route = createFileRoute("/_funnel/step-4")({
   component: RouteComponent,
@@ -12,21 +13,30 @@ export const Route = createFileRoute("/_funnel/step-4")({
 
 function RouteComponent() {
   const navigate = useNavigate();
-  const router = useRouter();
-  const reset = useOnboardingStore((state) => state.reset);
+  const { mutate: saveOnboarding, isPending } = useSaveOnboarding();
+
+  const selectedUserType = useOnboardingStore((state) => state.selectedUserType);
+  const selectedInterests = useOnboardingStore((state) => state.selectedInterests);
+  const selectedIndustries = useOnboardingStore((state) => state.selectedIndustries);
 
   const handleStartService = () => {
-    reset();
-    navigate({ to: "/" });
-  };
-
-  const handleBack = () => {
-    router.history.back();
+    saveOnboarding(
+      {
+        userType: selectedUserType || "",
+        interests: selectedInterests || [],
+        industries: selectedIndustries || [],
+      },
+      {
+        onSuccess: () => {
+          navigate({ to: "/step-4" });
+        },
+      }
+    );
   };
 
   return (
     <div className="w-full flex-1 flex flex-col items-center gap-8 text-center pb-12">
-      <StepHeader showBackButton onBack={handleBack} />
+      <StepHeader showBackButton backTo="/step-3" />
 
       <div className="flex flex-1 flex-col items-center justify-center gap-6">
         <p className="text-[length:var(--font-size-heading)] text-[color:var(--color-text)] font-[var(--font-weight-heading)]">
@@ -36,7 +46,14 @@ function RouteComponent() {
           성공적인 투자를 시작해 보세요
         </p>
 
-        <Button label="epic AI 시작하기" onClick={handleStartService} className="bg-gradient-to-br from-[var(--color-primary)] from-35% to-[var(--color-secondary)]" />
+        <Button
+          as="button"
+          label="epic AI 시작하기"
+          onClick={handleStartService}
+          disabled={isPending}
+          isPending={isPending}
+          className="bg-gradient-to-br from-[var(--color-primary)] from-35% to-[var(--color-secondary)]"
+        />
       </div>
     </div>
   );

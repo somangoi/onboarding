@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useOnboardingStore } from "@/entities/onboarding/store/useOnboardingStore";
 import { useOnboardingOptions } from "@/entities/onboarding/api/useOnboardingOptions";
 import { canMoveFromStep1 } from "@/entities/onboarding/model/validation";
@@ -12,7 +12,6 @@ export const Route = createFileRoute("/_funnel/step-1")({
 });
 
 function RouteComponent() {
-  const navigate = useNavigate();
   const { data: options, isLoading } = useOnboardingOptions();
   const selectedUserType = useOnboardingStore((state) => state.selectedUserType);
   const setUserType = useOnboardingStore((state) => state.setUserType);
@@ -21,13 +20,9 @@ function RouteComponent() {
     setUserType(id);
   };
 
-  const handleNext = () => {
-    navigate({ to: "/step-2" });
-  };
-
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center">
         <div className="text-[var(--color-text-sub)]">로딩 중...</div>
       </div>
     );
@@ -39,12 +34,12 @@ function RouteComponent() {
       <OptionGrid options={options?.userTypes || []} selectedIds={selectedUserType ? [selectedUserType] : []} onToggle={handleToggle} columns={2} />
       <StepFooter
         primaryButton={{
+          to: "/step-2",
           label: "선택 완료",
-          onClick: handleNext,
           disabled: !canMoveFromStep1(selectedUserType),
         }}
         skipButton={{
-          onClick: handleNext,
+          to: "/step-2",
         }}
       />
     </div>
