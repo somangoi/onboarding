@@ -1,6 +1,5 @@
+import { Button } from "@/shared/components/Button";
 import { cn } from "@/shared/lib/utils";
-
-type ButtonVariant = "primary" | "ghost";
 
 interface StepFooterProps {
   primaryButton?: {
@@ -14,21 +13,6 @@ interface StepFooterProps {
     onClick: () => void;
   };
   className?: string;
-}
-
-function Button({ label, onClick, disabled = false, variant = "primary" }: { label: string; onClick: () => void; disabled?: boolean; variant?: ButtonVariant }) {
-  const baseStyles = "px-8 py-3 rounded-full text-[var(--font-size-button)] font-[var(--font-weight-button)] transition-all duration-200  disabled:cursor-not-allowed";
-
-  const variantStyles = {
-    primary: "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary)] active:scale-95 min-w-[200px] cursor-pointer",
-    ghost: "text-[var(--color-text-sub)] hover:text-[var(--color-text)] underline cursor-pointer",
-  };
-
-  return (
-    <button type="button" onClick={onClick} disabled={disabled} className={cn(baseStyles, variantStyles[variant])}>
-      {label}
-    </button>
-  );
 }
 
 export function StepFooter({ primaryButton, skipButton, className }: StepFooterProps) {
