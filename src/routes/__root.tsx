@@ -1,6 +1,6 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-import { Toaster } from "@/shared/components/ui/Toaster";
+import { Toaster } from "@/shared/components/Toaster";
 
 export const Route = createRootRoute({
   component: () => (
