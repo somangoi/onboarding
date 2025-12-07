@@ -107,11 +107,11 @@ describe("saveOnboarding", () => {
   });
 
   it("올바른 데이터 형식으로 POST 요청을 보낸다", async () => {
-    let requestBody: any = null;
+    let requestBody: { userType: string; interests: string[]; industries: string[] } | null = null;
 
     server.use(
       http.post(`${BASE_URL}/api/onboarding`, async ({ request }) => {
-        requestBody = await request.json();
+        requestBody = await request.json() as { userType: string; interests: string[]; industries: string[] };
         return HttpResponse.json({
           success: true,
           message: "온보딩 완료",
