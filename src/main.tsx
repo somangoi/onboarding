@@ -8,7 +8,10 @@ import "./index.css";
 import { routeTree } from "./routeTree.gen";
 import { queryClient } from "./shared/lib/query-client";
 
-const router = createRouter({ routeTree });
+const router = createRouter({
+  routeTree,
+  defaultPreload: "intent",
+});
 
 declare module "@tanstack/react-router" {
   interface Register {
