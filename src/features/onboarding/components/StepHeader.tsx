@@ -14,10 +14,7 @@ export function StepHeader({ title, subtitle, showBackButton = false, onBack, cl
     <div className={cn("flex flex-col items-center w-full gap-4", className)}>
       <button
         onClick={onBack}
-        className={cn(
-          "self-start flex items-center gap-1 font-[var(--font-size-body-sm)] text-[var(--color-text-sub)] hover:text-[var(--color-text)] transition-colors",
-          !showBackButton && "invisible"
-        )}
+        className={cn("self-start flex items-center gap-1 font-[var(--font-size-body-sm)] text-[var(--color-text-sub)] cursor-pointer", !showBackButton && "invisible")}
         type="button"
         disabled={!showBackButton}
       >

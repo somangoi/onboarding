@@ -4,11 +4,12 @@ interface ProgressDotsProps {
   totalSteps: number;
   currentStep: number;
   className?: string;
+  showProgress?: boolean;
 }
 
-export function ProgressDots({ totalSteps, currentStep, className }: ProgressDotsProps) {
+export function ProgressDots({ totalSteps, currentStep, className, showProgress = true }: ProgressDotsProps) {
   return (
-    <div className={cn("flex items-center justify-center gap-1", className)}>
+    <div className={cn("flex items-center justify-center gap-1", className, !showProgress && "invisible")}>
       {Array.from({ length: totalSteps }, (_, index) => {
         const stepNumber = index + 1;
         const isActive = stepNumber === currentStep;
@@ -19,7 +20,7 @@ export function ProgressDots({ totalSteps, currentStep, className }: ProgressDot
             <div
               key={stepNumber}
               className={cn(
-                "flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium transition-all duration-300",
+                "flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium",
                 isActive && "bg-[var(--color-primary)] text-white",
                 !isActive && "bg-[#E1E2E7] text-[var(--color-text-sub)]"
               )}
