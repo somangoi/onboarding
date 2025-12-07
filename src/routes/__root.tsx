@@ -1,14 +1,26 @@
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { createRootRoute, Outlet, useNavigate } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { Toaster } from "@/shared/components/Toaster";
+import { Header } from "@/shared/components/Header";
+import { useOnboardingStore } from "@/entities/onboarding/store/useOnboardingStore";
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      <div className="p-2 flex gap-2">header</div>
-      <Outlet />
-      <Toaster />
-      <TanStackRouterDevtools />
-    </>
-  ),
+  component: () => {
+    const navigate = useNavigate();
+    const reset = useOnboardingStore((state) => state.reset);
+
+    const handleLogoClick = () => {
+      reset();
+      navigate({ to: "/" });
+    };
+
+    return (
+      <>
+        <Header onLogoClick={handleLogoClick} />
+        <Outlet />
+        <Toaster />
+        <TanStackRouterDevtools />
+      </>
+    );
+  },
 });

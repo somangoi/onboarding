@@ -47,6 +47,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:7.0.1"],\
           ["eslint-plugin-react-refresh", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:0.4.24"],\
           ["globals", "npm:16.5.0"],\
+          ["lucide-react", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:0.556.0"],\
           ["msw", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:2.12.4"],\
           ["onboarding", "workspace:."],\
           ["postcss", "npm:8.5.6"],\
@@ -4217,6 +4218,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["lucide-react", [\
+      ["npm:0.556.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/lucide-react-npm-0.556.0-5dab55401f-10c0.zip/node_modules/lucide-react/",\
+        "packageDependencies": [\
+          ["lucide-react", "npm:0.556.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:0.556.0", {\
+        "packageLocation": "./.yarn/__virtual__/lucide-react-virtual-beef8aeec0/4/.yarn/berry/cache/lucide-react-npm-0.556.0-5dab55401f-10c0.zip/node_modules/lucide-react/",\
+        "packageDependencies": [\
+          ["@types/react", "npm:19.2.7"],\
+          ["lucide-react", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:0.556.0"],\
+          ["react", "npm:19.2.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["magic-string", [\
       ["npm:0.30.21", {\
         "packageLocation": "../../../.yarn/berry/cache/magic-string-npm-0.30.21-9a226cb21e-10c0.zip/node_modules/magic-string/",\
@@ -4526,6 +4549,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:7.0.1"],\
           ["eslint-plugin-react-refresh", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:0.4.24"],\
           ["globals", "npm:16.5.0"],\
+          ["lucide-react", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:0.556.0"],\
           ["msw", "virtual:953afb6c0abe729a08b8ba3d580e8506f15e1a33106aea6c9f1c3c522af24e44b2d104a1c2137f5583b04fb1672e981f965d1482acb656c5ac8b204369f364b0#npm:2.12.4"],\
           ["onboarding", "workspace:."],\
           ["postcss", "npm:8.5.6"],\
