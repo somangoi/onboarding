@@ -1,5 +1,4 @@
-@import 'tailwindcss';
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@import "tailwindcss";
 
 @theme {
   /* Colors */
@@ -11,16 +10,14 @@
 
   /* Typography */
   --font-sans:
-    Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
-    'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    sans-serif;
+    Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", sans-serif;
 
-  --font-size-heading: 1.5rem;
-  --font-size-body-lg: 1.125rem;
-  --font-size-body: 1rem;
-  --font-size-body-sm: 0.875rem;
-  --font-size-button: 1.125rem;
+  --font-size-heading: 24px;
+  --font-size-body-lg: 18px;
+  --font-size-body-md: 16px;
+  --font-size-body-sm: 14px;
+  --font-size-button: 18px;
 
   --font-weight-heading: 700;
   --font-weight-body: 500;
