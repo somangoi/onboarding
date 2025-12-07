@@ -3,10 +3,11 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "@/shared/components/ui/Toaster";
 import "./index.css";
 
 import { routeTree } from "./routeTree.gen";
-import { queryClient } from "./lib/query-client";
+import { queryClient } from "./shared/lib/query-client";
 
 const router = createRouter({ routeTree });
 
@@ -32,6 +33,7 @@ enableMocking().then(() => {
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
         <ReactQueryDevtools initialIsOpen={false} />
+        <Toaster />
       </QueryClientProvider>
     </StrictMode>
   );
