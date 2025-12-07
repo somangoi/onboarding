@@ -27,10 +27,6 @@
   --radius: 0.5rem;
 }
 
-* {
-  border-color: var(--color-border);
-}
-
 body {
   font-family: var(--font-sans);
   background-color: var(--color-background);
