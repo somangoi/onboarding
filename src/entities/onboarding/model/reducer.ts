@@ -8,7 +8,7 @@ export const initialState: OnboardingState = {
   isCompleted: false,
 };
 
-const canMoveNext = (state: OnboardingState): boolean => {
+export const canMoveNext = (state: OnboardingState): boolean => {
   switch (state.currentStep) {
     case 0:
       return true;
