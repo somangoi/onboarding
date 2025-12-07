@@ -5,10 +5,12 @@ interface OnboardingStore {
   selectedUserType: string | null;
   selectedInterests: string[];
   selectedIndustries: string[];
+  maxStep: number;
 
   setUserType: (userType: string) => void;
   toggleInterest: (interest: string) => void;
   toggleIndustry: (industry: string) => void;
+  setMaxStep: (step: number) => void;
   reset: () => void;
 }
 
@@ -18,6 +20,7 @@ export const useOnboardingStore = create<OnboardingStore>()(
       selectedUserType: null,
       selectedInterests: [],
       selectedIndustries: [],
+      maxStep: 1,
 
       setUserType: (userType) => set({ selectedUserType: userType }),
 
@@ -35,11 +38,17 @@ export const useOnboardingStore = create<OnboardingStore>()(
             : [...state.selectedIndustries, industry],
         })),
 
+      setMaxStep: (step) =>
+        set((state) => ({
+          maxStep: Math.max(state.maxStep, step),
+        })),
+
       reset: () =>
         set({
           selectedUserType: null,
           selectedInterests: [],
           selectedIndustries: [],
+          maxStep: 1,
         }),
     }),
     {
@@ -48,6 +57,7 @@ export const useOnboardingStore = create<OnboardingStore>()(
         selectedUserType: state.selectedUserType,
         selectedInterests: state.selectedInterests,
         selectedIndustries: state.selectedIndustries,
+        maxStep: state.maxStep,
       }),
     }
   )

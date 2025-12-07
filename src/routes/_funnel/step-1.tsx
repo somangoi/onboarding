@@ -15,9 +15,14 @@ function RouteComponent() {
   const { data: options, isLoading } = useOnboardingOptions();
   const selectedUserType = useOnboardingStore((state) => state.selectedUserType);
   const setUserType = useOnboardingStore((state) => state.setUserType);
+  const setMaxStep = useOnboardingStore((state) => state.setMaxStep);
 
   const handleToggle = (id: string) => {
     setUserType(id);
+  };
+
+  const handleMoveToNextStep = () => {
+    setMaxStep(2);
   };
 
   if (isLoading) {
@@ -37,9 +42,11 @@ function RouteComponent() {
           to: "/step-2",
           label: "선택 완료",
           disabled: !canMoveFromStep1(selectedUserType),
+          onClick: handleMoveToNextStep,
         }}
         skipButton={{
           to: "/step-2",
+          onClick: handleMoveToNextStep,
         }}
       />
     </div>

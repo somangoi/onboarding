@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useOnboardingStore } from "@/entities/onboarding/store/useOnboardingStore";
 import { useOnboardingOptions } from "@/entities/onboarding/api/useOnboardingOptions";
 import { canMoveFromStep3 } from "@/entities/onboarding/model/validation";
@@ -9,6 +9,13 @@ export const Route = createFileRoute("/_funnel/step-3")({
   staticData: {
     showProgress: true,
   },
+  beforeLoad: () => {
+    const { maxStep } = useOnboardingStore.getState();
+
+    if (maxStep < 3) {
+      throw redirect({ to: "/step-1" });
+    }
+  },
 });
 
 function RouteComponent() {
@@ -16,9 +23,14 @@ function RouteComponent() {
 
   const selectedIndustries = useOnboardingStore((state) => state.selectedIndustries);
   const toggleIndustry = useOnboardingStore((state) => state.toggleIndustry);
+  const setMaxStep = useOnboardingStore((state) => state.setMaxStep);
 
   const handleToggle = (id: string) => {
     toggleIndustry(id);
+  };
+
+  const handleMoveToNextStep = () => {
+    setMaxStep(4);
   };
 
   if (isLoading) {
@@ -38,9 +50,11 @@ function RouteComponent() {
           label: "선택 완료",
           disabled: !canMoveFromStep3(selectedIndustries),
           to: "/step-4",
+          onClick: handleMoveToNextStep,
         }}
         skipButton={{
           to: "/step-4",
+          onClick: handleMoveToNextStep,
         }}
       />
     </div>

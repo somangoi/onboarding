@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { useOnboardingStore } from "@/entities/onboarding/store/useOnboardingStore";
 import { StepHeader } from "@/features/onboarding/components";
 import { Button } from "@/shared/components/Button";
@@ -8,6 +8,13 @@ export const Route = createFileRoute("/_funnel/step-4")({
   component: RouteComponent,
   staticData: {
     showProgress: false,
+  },
+  beforeLoad: () => {
+    const { maxStep } = useOnboardingStore.getState();
+
+    if (maxStep < 4) {
+      throw redirect({ to: "/step-1" });
+    }
   },
 });
 
