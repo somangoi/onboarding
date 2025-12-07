@@ -1,4 +1,5 @@
 import { cn } from "@/shared/lib/utils";
+import React from "react";
 
 interface ProgressDotsProps {
   totalSteps: number;
@@ -16,7 +17,7 @@ export function ProgressDots({ totalSteps, currentStep, className, showProgress 
         const isLast = stepNumber === totalSteps;
 
         return (
-          <div key={stepNumber}>
+          <React.Fragment key={stepNumber}>
             <div
               className={cn(
                 "flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium",
@@ -35,7 +36,7 @@ export function ProgressDots({ totalSteps, currentStep, className, showProgress 
                 <div className="w-[3px] h-[1px] rounded-full bg-[var(--color-text-sub)]"></div>
               </div>
             )}
-          </div>
+          </React.Fragment>
         );
       })}
     </div>
