@@ -6,7 +6,6 @@ type PrimaryButton = {
   label: string;
   to: LinkProps["to"];
   disabled?: boolean;
-  preload?: LinkProps["preload"];
   onClick?: () => void;
 };
 

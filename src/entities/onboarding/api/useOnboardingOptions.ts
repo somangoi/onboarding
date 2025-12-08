@@ -1,9 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import { getOnboardingOptions } from "./onboarding";
 
+export const onboardingOptions = queryOptions({
+  queryKey: ["onboarding", "options"],
+  queryFn: getOnboardingOptions,
+});
+
 export function useOnboardingOptions() {
-  return useQuery({
-    queryKey: ["onboarding", "options"],
-    queryFn: getOnboardingOptions,
-  });
+  return useQuery(onboardingOptions);
 }

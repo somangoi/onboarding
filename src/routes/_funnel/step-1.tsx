@@ -1,13 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useOnboardingStore } from "@/entities/onboarding/store/useOnboardingStore";
-import { useOnboardingOptions } from "@/entities/onboarding/api/useOnboardingOptions";
+import { onboardingOptions, useOnboardingOptions } from "@/entities/onboarding/api/useOnboardingOptions";
 import { canMoveFromStep1 } from "@/entities/onboarding/model/validation";
 import { StepHeader, StepFooter, OptionGrid } from "@/features/onboarding/components";
+import { queryClient } from "@/shared/lib/query-client";
 
 export const Route = createFileRoute("/_funnel/step-1")({
   component: RouteComponent,
   staticData: {
     showProgress: true,
+  },
+  loader: async () => {
+    return queryClient.ensureQueryData(onboardingOptions);
   },
 });
 
