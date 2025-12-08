@@ -10,7 +10,7 @@ import { queryClient } from "./shared/lib/query-client";
 
 const router = createRouter({
   routeTree,
-  defaultPreload: "intent",
+  defaultPreload: false,
 });
 
 declare module "@tanstack/react-router" {
