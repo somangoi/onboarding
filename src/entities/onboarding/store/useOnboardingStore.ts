@@ -26,18 +26,16 @@ export const useOnboardingStore = create<OnboardingStore>()(
 
       toggleInterest: (interest) =>
         set((state) => ({
-          selectedInterests: state.selectedInterests.includes(interest)
-            ? state.selectedInterests.filter((i) => i !== interest)
-            : [...state.selectedInterests, interest],
+          selectedInterests: state.selectedInterests.includes(interest) ? state.selectedInterests.filter((i) => i !== interest) : [...state.selectedInterests, interest],
         })),
 
       toggleIndustry: (industry) =>
         set((state) => ({
-          selectedIndustries: state.selectedIndustries.includes(industry)
-            ? state.selectedIndustries.filter((i) => i !== industry)
-            : [...state.selectedIndustries, industry],
+          selectedIndustries: state.selectedIndustries.includes(industry) ? state.selectedIndustries.filter((i) => i !== industry) : [...state.selectedIndustries, industry],
         })),
 
+      // Math.max를 사용하여 maxStep이 뒤로 돌아가지 않도록 보장
+      // 사용자가 step-3까지 갔다가 step-1로 돌아가도 maxStep은 3을 유지
       setMaxStep: (step) =>
         set((state) => ({
           maxStep: Math.max(state.maxStep, step),

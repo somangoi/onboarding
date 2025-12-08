@@ -1,8 +1,5 @@
 import type { OnboardingOptions, OnboardingRequest, OnboardingResponse } from "../model/types";
 
-/**
- * 온보딩 옵션 조회 API
- */
 export async function getOnboardingOptions(): Promise<OnboardingOptions> {
   const response = await fetch("/api/onboarding/options");
 
